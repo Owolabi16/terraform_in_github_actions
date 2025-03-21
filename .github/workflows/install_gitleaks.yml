@@ -1,32 +1,26 @@
 name: Install gitleaks 
-
 on:
- push:
-   branches: 
-     - main
-
+  push:
+    branches: 
+      - main
 jobs:
   gitleaks:
     name: gitleak install
     runs-on: ubuntu-latest
-
+    
     steps: 
       - name: Checkout Repository
         uses: actions/checkout@v4
-
+        
       - name: Install Gitleaks
         run: |
-          wget -O gitleaks https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks-linux-amd64
+          curl -sSfL https://github.com/gitleaks/gitleaks/releases/download/v8.18.1/gitleaks_8.18.1_linux_x64.tar.gz | tar -xz
           chmod +x gitleaks
           sudo mv gitleaks /usr/local/bin/
-
+          
       - name: Verify Gitleaks Installation
         run: gitleaks version
-
+        
       - name: Run Gitleaks Scan
         run: |
           gitleaks detect --source . --verbose --redact
-
-
-
-     
