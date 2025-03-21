@@ -1,0 +1,33 @@
+name: Install gitleaks 
+
+on:
+ push:
+   branches: 
+     - main
+
+jobs:
+  gitleaks:
+    name: gitleak install
+    runs-on: ubuntu-latests
+
+    steps: 
+      - name: Checkout Repository
+        uses: action/checkout@v4
+
+      - name: Install Gitleaks
+        run: |
+          curl -sSL -o gitleaks.tar.gz https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks-linux-amd64.tar.gz
+          tar -xvf gitleaks.tar.gz
+          sudo mv gitleaks /usr/local/bin/
+          rm gitleaks.tar.gz
+
+      - name: Verify Gitleaks Installation
+        run: gitleaks version
+
+      - name: Run Gitleaks Scan
+        run: |
+          gitleaks detect --source . --verbose --redact
+
+
+
+     
