@@ -29,21 +29,6 @@ resource "aws_security_group" "proxy_sg" {
   }
 }
 
-data "aws_subnet" "default" {
-  filter {
-    name   = "vpc-id"
-    values = [data.aws_vpc.default.id]
-  }
-  filter {
-    name   = "default-for-az"
-    values = ["true"]
-  }
-}
-
-data "aws_vpc" "default" {
-  default = true
-}
-
 
 # EC2 instance with enforced user data replacement
 resource "aws_instance" "proxy" {
@@ -51,7 +36,6 @@ resource "aws_instance" "proxy" {
   instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.proxy_sg.id]
   iam_instance_profile   = aws_iam_instance_profile.ssm_profile.name
-  subnet_id     = data.aws_subnet.default.id
 
   # Critical for user data updates
   user_data_replace_on_change = true
