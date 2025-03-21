@@ -34,7 +34,5 @@ jobs:
         run: terraform init
 
       - name: Terraform Apply
-        run: |
-          export TF_LOG=DEBUG
-          terraform apply -auto-approve
+        run: terraform apply -auto-approve -var-file="variables.tf"
 
