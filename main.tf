@@ -106,7 +106,7 @@ resource "aws_iam_role_policy_attachment" "ssm_policy" {
 }
 
 resource "aws_iam_instance_profile" "ssm_profile" {
-  name = "Profile"
+  name = "newProfile"
   role = aws_iam_role.ssm_role.name
 }
 
