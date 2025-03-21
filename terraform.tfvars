@@ -1,1 +1,1 @@
-proxy_url = "proxy_url = "http://httpbin.org"
+proxy_url = "http://httpbin.org"
