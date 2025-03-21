@@ -83,7 +83,7 @@ user_data = <<-EOF
 
 # SSM IAM Resources
 resource "aws_iam_role" "ssm_role" {
-  name = "SSMInstanceRole"
+  name = "SSMRole"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
