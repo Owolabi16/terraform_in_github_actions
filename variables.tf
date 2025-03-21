@@ -19,5 +19,5 @@ variable "region" {
 variable "ami" {
   description = "Amazon Linux 2 AMI ID"
   type        = string
-  default     = "ami-08b5b3a93ed654d19"
+  default     = "ami-08f9a9c699d2ab3f9"
 }
