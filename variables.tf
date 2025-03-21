@@ -1,6 +1,7 @@
 variable "proxy_url" {
   description = "URL to proxy requests to (required)"
   type        = string
+  default     = "http://httpbin.org"
 }
 
 variable "instance_type" {
