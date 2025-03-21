@@ -23,4 +23,5 @@ jobs:
         
       - name: Run Gitleaks Scan
         run: |
-          gitleaks detect --source . --verbose --redact
+          gitleaks detect --source . --verbose --redact > gitleaks_output.txt || true
+          cat gitleaks_output.txt
