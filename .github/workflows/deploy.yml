@@ -35,6 +35,6 @@ jobs:
 
       - name: Terraform Apply
         run: |
-          set -x 
+          export TF_LOG=DEBUG
           terraform apply -auto-approve
 
