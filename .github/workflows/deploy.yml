@@ -30,9 +30,27 @@ jobs:
           role-session-name: GhActionRoleSession
           aws-region: eu-west-1
 
+        # Download previous state if it exists
+      - name: Download Terraform state
+        uses: actions/download-artifact@v3
+        with:
+          name: terraform-state
+          path: .
+        continue-on-error: true
+
       - name: Terraform Init
         run: terraform init
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
+
+      - name: Upload Terraform state
+        uses: actions/upload-artifact@v3
+        with:
+          name: terraform-state
+          path: |
+            terraform.tfstate
+            terraform.tfstate.backup      
+
+        
 
