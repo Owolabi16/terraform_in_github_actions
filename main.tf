@@ -4,7 +4,7 @@ provider "aws" {
 
 # Security group allowing HTTP only
 resource "aws_security_group" "proxy_sg" {
-  name        = "nginx-proxy-sg"
+  name        = "nginx-sg"
   description = "Security group for Nginx proxy instance"
 
   ingress {
