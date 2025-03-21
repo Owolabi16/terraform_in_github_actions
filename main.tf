@@ -2,7 +2,7 @@ provider "aws" {
   region = var.region
 }
 
-# Security group allowing HTTP only
+# Security group allowing HTTP only.
 resource "aws_security_group" "proxy_sg" {
   name        = "nginx-proxy-sg"
   description = "Security group for Nginx proxy instance"
